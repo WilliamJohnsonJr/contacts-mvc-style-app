@@ -64,6 +64,9 @@ describe('Class Tests', function () {
 		it('should push the new contact into the list', ()=>{
 			expect(controller.pushContact).to.be.a('function');
 		});
+		it('should deleta a contact when the user clicks "delete Contact"', ()=>{
+			expect(controller.deleteContact).to.be.a('function');
+		});
 	});
 });
 // Closes the Class Tests describe function. This should be the last piece of code, other than export.
