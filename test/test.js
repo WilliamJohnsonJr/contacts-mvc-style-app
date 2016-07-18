@@ -55,14 +55,8 @@ describe('Class Tests', function () {
 		beforeEach(()=>{
 			controller = new Controller();
 		});
-		it ('should create a list', ()=>{
-			expect(controller.createList).to.be.a('function');
-		});
-		it ('should create a contact when the user clicks "submit"', ()=>{
+		it('should, when the user clicks "submit": create a contact; assign an ID to the Contact; collect the firstName, lastName, phoneNumber, city, and state from the form and assign then to the new contact', ()=>{
 			expect(controller.createContact).to.be.a('function');
-		});
-		it('should assign an ID to the Contact; collect the firstName, lastName, phoneNumber, city, and state from the form and assign then to the new contact', ()=>{
-			expect(controller.getContactInfo).to.be.a('function');
 		});
 		it('should pull a photo from Randomuser.me and add it to the Contact', ()=>{
 			expect(controller.addPhoto).to.be.a('function');
