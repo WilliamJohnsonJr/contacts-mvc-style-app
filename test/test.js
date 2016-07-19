@@ -64,8 +64,14 @@ describe('Class Tests', function () {
 		it('should push the new contact into the list', ()=>{
 			expect(controller.pushContact).to.be.a('function');
 		});
+		it('should grab the list and inject it into the HTML', ()=>{
+			expect(controller.injectList).to.be.a('function');
+		});
 		it('should deleta a contact when the user clicks "delete Contact"', ()=>{
 			expect(controller.deleteContact).to.be.a('function');
+		});
+		it('should initialize itself', ()=>{
+			expect(controller.init).to.be.a('function');
 		});
 	});
 });
