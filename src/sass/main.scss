@@ -6,7 +6,7 @@
 
 .formContainer{
 	background: lightgray;
-	padding: 20px;
+	padding: 20px 20px 20px 0;
 }
 
 .formHeader{
@@ -15,10 +15,16 @@
 	text-decoration: underline;
 }
 
+.instructions{
+	padding: 20px;
+	color: white;
+}
+
 .newContactForm{
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	padding: 20px;
 }
 
 .submitButton{

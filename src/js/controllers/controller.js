@@ -12,23 +12,36 @@ class Controller{
 	createContact(){
     	this.form.on('submit', (event) => {
 	      event.preventDefault();
-	      let contact = new Contact();
-	      contact.id = this.xID;
-	      this.xID +=1;  
-	      this.addPhoto(contact);
+	      if (
+	      	  String(this.form.find('.firstName').val()).length > 0 &&
+		      String(this.form.find('.lastName').val()).length > 0 &&
+		      String(this.form.find('.phoneNumber').val()).length > 0 &&
+		      String(this.form.find('.city').val()).length > 0 &&
+		      String(this.form.find('.state').val()).length > 0
+	      	) {
+		      let contact = new Contact();
+		      contact.id = this.xID;
+		      this.xID +=1;  
+		      this.addPhoto(contact);
+	  	  } else {
+	  	  	alert('Please fill in all fields');
+	  	  };
 	    });
 	}
 
 	deleteContact(){
-		$(".deleteContact").on('click', function(event){
+		$(".deleteButton").on('click', (event)=>{
 			event.preventDefault();
-			// this.list.forEach(function(contactObj, index){
-			// 	if (event.target.id === contactObj.id){
-			// 		this.list.splice(index, 1);
-			// 		$(event.target).remove();
-			// 	};
-			// });
-			// this.injectList(this.list);
+			event.target.classList.forEach((classVal)=>{
+				this.list.forEach((contactObj, index)=>{
+					if (classVal === "delete-"+contactObj.id){
+						$(`contact-${contactObj.id}`).remove();
+						this.list.splice(index, 1);
+					};
+				});
+			});
+			this.injectList(this.list);	
+			this.deleteContact();
 		});
 	};
 
@@ -50,6 +63,7 @@ class Controller{
 		      this.form.find('.phoneNumber').val('');
 		      this.form.find('.city').val('');
 		      this.form.find('.state').val('');
+		      this.deleteContact();
 	  		}
 		});
 	}
@@ -62,29 +76,31 @@ class Controller{
 	injectList(list){
 		$(".listUl").html(``);
 		list.forEach(function(contact){
-			$(".listUl").append(`<li class="photo">
-					<img src="${contact.photo}">
-				</li>
-				<li class="contactName">
-					${contact.firstName} ${contact.lastName}
-				</li>
-				<li class="phoneNumber">
-					${contact.phoneNumber}
-				</li>
-				<li class="location">
-					${contact.city}, ${contact.state}
-				</li>
-				<li class="deleteLi">
-					<button class="${contact.id}">Delete Contact
-					</button>
-				</li>
+			$(".listUl").append(`<li>
+				<ul class="contactUL contact-${contact.id}">
+					<li class="photo">
+						<img src="${contact.photo}">
+					</li>
+					<li class="contactName">
+						${contact.firstName} ${contact.lastName}
+					</li>
+					<li class="phoneNumber">
+						${contact.phoneNumber}
+					</li>
+					<li class="location">
+						${contact.city}, ${contact.state}
+					</li>
+					<li class="deleteLi">
+						<button class="deleteButton delete-${contact.id}">Delete Contact
+						</button>
+					</li>
+				<ul>
 			</li>`)
 		});
 	}
 
 	init(){
 		this.createContact();
-		this.deleteContact();
 	}
 }
 
