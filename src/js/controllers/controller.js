@@ -76,11 +76,11 @@ class Controller{
 	injectList(list){
 		$(".listUl").html(``);
 		list.forEach(function(contact){
-			$(".listUl").append(`<li>
-				<ul class="contactUL contact-${contact.id}">
-					<li class="photo">
+			$(".listUl").append(`<li class="contact contact-${contact.id}">
+					<div class="photo">
 						<img src="${contact.photo}">
-					</li>
+					</div>
+				<ul class="contactUL">
 					<li class="contactName">
 						${contact.firstName} ${contact.lastName}
 					</li>
