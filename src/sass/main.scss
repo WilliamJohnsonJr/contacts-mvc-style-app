@@ -1,5 +1,29 @@
-.newContactForm{
+.container{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.formContainer{
+	background: lightgray;
+	padding: 20px;
+}
+
+.formHeader{
+	padding: 20px;
+	color: white;
+	text-decoration: underline;
+}
+
+.newContactForm{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.submitButton{
+	align-self: flex-end;
+	margin-right: 5%;
+	background: #316292;
+	color: white;
 }
