@@ -22,7 +22,6 @@ class Controller{
 	deleteContact(){
 		$(".deleteContact").on('click', function(event){
 			event.preventDefault();
-			console.log(event);
 			// this.list.forEach(function(contactObj, index){
 			// 	if (event.target.id === contactObj.id){
 			// 		this.list.splice(index, 1);
@@ -45,9 +44,6 @@ class Controller{
 		      contact.city = this.form.find('.city').val();
 		      contact.state = this.form.find('.state').val();
 		      this.pushContact(contact);
-		      console.log(contact);
-		      console.log(this.list);
-		      $(".listUl").html(``);
 		      this.injectList(this.list);
 		      this.form.find('.firstName').val('');
 		      this.form.find('.lastName').val('');
@@ -60,11 +56,7 @@ class Controller{
 
 	pushContact(contact){
 		  this.list.push(contact);
-		  _.sortBy(this.list, 'lastName');
-		  console.log(this.list);
-	      this.list.forEach(function(object, index){
-		  	object.id = index;
-	      });
+		  this.list = _.sortBy(this.list, 'lastName');
 	}
 
 	injectList(list){
@@ -87,7 +79,6 @@ class Controller{
 					</button>
 				</li>
 			</li>`)
-			// $(".listUl").append(`<img src= ${contact.photo}>`)
 		});
 	}
 
